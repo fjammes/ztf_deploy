@@ -8,12 +8,14 @@ spec:
       containers:
       - name: pysedm
         image: ztfsedm/ztf
+        imagePullPolicy: Always
         command: ["sh",  "/config-run/run.sh"]
+        # command: ["tail",  "-f", "/dev/null"]
         volumeMounts:
           - name: config-run
             mountPath: /config-run
       restartPolicy: Never
-  backoffLimit: 4
-  volumes:
-    - configMap:
-      name: config-run
+      volumes:
+        - name: config-run
+          configMap:
+            name: config-run
