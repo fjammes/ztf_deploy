@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pysedm
+spec:
+  template:
+    spec:
+      containers:
+      - name: pysedm
+        image: ztfsedm/ztf
+        imagePullPolicy: Always
+        command: ["sh",  "/config-run/run.sh"]
+        # command: ["tail",  "-f", "/dev/null"]
+        volumeMounts:
+          - name: config-run
+            mountPath: /config-run
+          - name: ztf-data
+            mountPath: /data
+      restartPolicy: Never
+      volumes:
+        - name: config-run
+          configMap:
+            name: config-run
+
+        - name: ztf-data
+          rbd:
+            monitors: 
+            - '10.16.154.78:6789'
+            - '10.16.154.82:6789'
+            - '10.16.154.83:6789'
+            pool: kube
+            image: foo
+            fsType: xfs 
+            readOnly: false
+            user: admin
+            secretRef:
+              name: ceph-secret
