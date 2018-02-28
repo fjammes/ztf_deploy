@@ -1,0 +1,12 @@
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "ztf-data-pv" 
+spec:
+  capacity:
+    storage: "500Gi" 
+  accessModes:
+    - "ReadWriteOnce"
+  cinder: 
+    fsType: "ext3" 
+    volumeID: "efd8d9aa-695d-4269-ab00-3b72b735f077" 

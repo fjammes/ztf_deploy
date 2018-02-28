@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pysedm
+spec:
+  template:
+    spec:
+      containers:
+      - name: pysedm
+        image: ztfsedm/ztf
+        imagePullPolicy: Always
+        command: ["sh",  "/config-run/run.sh"]
+        # command: ["tail",  "-f", "/dev/null"]
+        volumeMounts:
+          - name: config-run
+            mountPath: /config-run
+          - name: ztf-data 
+            mountPath: /mnt/ztf-data
+      restartPolicy: Never
+      volumes:
+        - name: config-run
+          configMap:
+            name: config-run
+        - name: ztf-data
+          cinder:
+            fsType: "ext3" 
+            volumeID: "efd8d9aa-695d-4269-ab00-3b72b735f077" 
