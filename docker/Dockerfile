@@ -8,7 +8,7 @@ RUN apt-get -y update && \
     apt-get -y clean
 
 RUN apt-get -y install gcc g++ libgl1-mesa-glx
-RUN pip install shapely iminuit sep
+RUN pip install shapely iminuit pynverse sep
 
 RUN pip install propobject modefit==0.2.4 astrobject==0.5.14 \
     pyifu==0.5.16

@@ -1,4 +1,4 @@
-export SEDMREDUXPATH="/root/redux"
+export SEDMREDUXPATH="/mnt/data/redux"
 
 DATE=20180204
 

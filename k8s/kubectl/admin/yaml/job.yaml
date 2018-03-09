@@ -5,6 +5,8 @@ metadata:
 spec:
   template:
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ztf-worker-3
       containers:
       - name: pysedm
         image: ztfsedm/ztf
@@ -14,8 +16,13 @@ spec:
         volumeMounts:
           - name: config-run
             mountPath: /config-run
+          - mountPath: /mnt/data
+            name: ztf-data
       restartPolicy: Never
       volumes:
         - name: config-run
           configMap:
             name: config-run
+        - name: ztf-data 
+          hostPath:
+             path: /mnt/data
