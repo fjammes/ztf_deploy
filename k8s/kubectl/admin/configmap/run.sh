@@ -7,6 +7,9 @@ DATE=20180306
 
 NPROC=$(nproc)
 
+# TODO get data and use script
+# script --return --command=/mnt/data/run.sh
+
 ccd_to_cube.py "$DATE" --rebuild --tracematch --hexagrid
 
 date
