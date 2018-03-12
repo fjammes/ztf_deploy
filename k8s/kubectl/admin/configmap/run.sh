@@ -1,23 +1,10 @@
 set -e
 set -x
 
-export SEDMREDUXPATH="/mnt/data/redux"
+# Uncomment for debugging purpose
+# tail -f /dev/null
 
-DATE=20180306
+WORKDIR="/config-run"
+# . "${WORKDIR}/get_data.sh"
+script --return --quiet --timing --command="sh ${WORKDIR}/compute.sh"
 
-NPROC=$(nproc)
-
-# TODO get data and use script
-# script --return --command=/mnt/data/run.sh
-
-ccd_to_cube.py "$DATE" --rebuild --tracematch --hexagrid
-
-date
-echo "derive_wavesolution"
-derive_wavesolution.py "$DATE" --nsub "$NPROC"
-
-date
-echo "ccd_to_cube --flat"
-ccd_to_cube.py "$DATE" --flat
-
-date
