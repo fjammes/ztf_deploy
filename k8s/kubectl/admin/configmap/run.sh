@@ -7,7 +7,7 @@ DATE=20180306
 
 NPROC=$(nproc)
 
-ccd_to_cube.py "$DATE" --tracematch --hexagrid
+ccd_to_cube.py "$DATE" --rebuild --tracematch --hexagrid
 
 date
 echo "derive_wavesolution"
