@@ -6,5 +6,5 @@ set -x
 
 WORKDIR="/config-run"
 # . "${WORKDIR}/get_data.sh"
-script --return --quiet --timing --command="sh ${WORKDIR}/compute.sh"
+script --return --quiet --command="sh ${WORKDIR}/compute.sh"
 

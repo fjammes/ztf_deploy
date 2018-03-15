@@ -14,12 +14,17 @@ spec:
         command: ["sh",  "/config-run/run.sh"]
         # command: ["tail",  "-f", "/dev/null"]
         volumeMounts:
+          - name: config-matplotlib
+            mountPath: /root/.matplotlib 
           - name: config-run
             mountPath: /config-run
-          - mountPath: /mnt/data
-            name: ztf-data
+          - name: ztf-data
+            mountPath: /mnt/data
       restartPolicy: Never
       volumes:
+        - name: config-matplotlib
+          configMap:
+            name: config-matplotlib
         - name: config-run
           configMap:
             name: config-run
