@@ -15,7 +15,13 @@ RUN pip install shapely==1.6.4.post1 iminuit==1.2 pynverse==0.1.4.4 sep==1.0.1
 RUN pip install propobject==0.1.3 modefit==0.2.4 astrobject==0.5.14 \
     pyifu==0.5.16
 
+#ENV GIT_REPO=https://github.com/MickaelRigault/pysedm.git
+#ENV GIT_REF=master
+
+ENV GIT_REPO=https://github.com/fjammes/pysedm.git
+ENV GIT_REF=parallel
+
 RUN cd $HOME && \
-    git clone https://github.com/MickaelRigault/pysedm.git && \
+    git clone --depth 1 -b "$GIT_REF" --single-branch  "$GIT_REPO" && \
     cd pysedm && \
     python setup.py install
