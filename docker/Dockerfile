@@ -1,4 +1,4 @@
-FROM continuumio/anaconda:5.0.1
+FROM continuumio/miniconda:4.4.10
 MAINTAINER Mickael Rigault <mickael.rigault@clermont.in2p3.fr>
 MAINTAINER Fabrice Jammes <fabrice.jammes@in2p3.fr>
 
@@ -8,9 +8,11 @@ RUN apt-get -y update && \
     apt-get -y clean
 
 RUN apt-get -y install gcc g++ libgl1-mesa-glx
-RUN pip install shapely iminuit pynverse sep
+RUN pip install numpy==1.14.2 matplotlib==2.2.0
 
-RUN pip install propobject modefit==0.2.4 astrobject==0.5.14 \
+RUN pip install shapely==1.6.4.post1 iminuit==1.2 pynverse==0.1.4.4 sep==1.0.1
+
+RUN pip install propobject==0.1.3 modefit==0.2.4 astrobject==0.5.14 \
     pyifu==0.5.16
 
 RUN cd $HOME && \
