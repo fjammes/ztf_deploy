@@ -8,7 +8,7 @@ RUN apt-get -y update && \
     apt-get -y clean
 
 RUN apt-get -y install gcc g++ libgl1-mesa-glx
-RUN pip install numpy==1.14.2 matplotlib==2.2.0
+RUN pip install image==1.5.19 numpy==1.14.2 matplotlib==2.2.0
 
 RUN pip install shapely==1.6.4.post1 iminuit==1.2 pynverse==0.1.4.4 sep==1.0.1
 
@@ -22,6 +22,7 @@ ENV GIT_REPO=https://github.com/fjammes/pysedm.git
 ENV GIT_REF=parallel
 
 RUN cd $HOME && \
+    echo "Cloning branch $GIT_REF of $GIT_REPO" && \
     git clone --depth 1 -b "$GIT_REF" --single-branch  "$GIT_REPO" && \
     cd pysedm && \
     python setup.py install
