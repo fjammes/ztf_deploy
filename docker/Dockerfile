@@ -8,11 +8,11 @@ RUN apt-get -y update && \
     apt-get -y clean
 
 RUN apt-get -y install gcc g++ libgl1-mesa-glx
-RUN pip install image==1.5.19 numpy==1.14.2 matplotlib==2.2.0
 
+RUN pip install image==1.5.19 numpy==1.14.2 matplotlib==2.2.0 scikit-image==0.13.1
 RUN pip install shapely==1.6.4.post1 iminuit==1.2 pynverse==0.1.4.4 sep==1.0.1
 
-RUN pip install propobject==0.1.3 modefit==0.2.4 astrobject==0.5.14 \
+RUN pip install astLib==0.10.0 propobject==0.1.3 modefit==0.2.4 astrobject==0.5.14 \
     pyifu==0.5.16
 
 #ENV GIT_REPO=https://github.com/MickaelRigault/pysedm.git
